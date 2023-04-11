@@ -1,13 +1,14 @@
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { HandySvg } from 'handy-svg';
 
 import "../../styles/variables.scss";
 import './bonus.scss';
 import chevronRightSVG from '../../icons/chevron_right.svg';
 import fireSVG from '../../icons/fire.svg';
-import { getAxiosTokenInstance } from '../../services/api';
+import { getAxiosTokenInstance, getAxiosBonusInstance } from '../../services/api';
 
-const TOKEN_PATH = 'api/v3/clients/accesstoken'
+const TOKEN_PATH = 'api/v3/clients/accesstoken';
+const BONUS_PATH = '/api/v3/ibonus/generalinfo/';
 
 const IconChevronRight = () => (
   <HandySvg
@@ -33,6 +34,7 @@ const options = {
 };
 
 const apiTokenInstance = getAxiosTokenInstance();
+const apiBonusInstance = getAxiosBonusInstance();
 
 const tokenData = {
   "idClient": "2c44d8c2-c89a-472e-aab3-9a8a29142315",
@@ -42,25 +44,25 @@ const tokenData = {
   "latitude": 0,
   "longitude": 0,
   "sourceQuery": 0
-}
+};
 
 const Bonus = () => {
   const [isLoading, setIsLoading] = useState(true);
-
-  const bonusAmount = 300;
-  const dateBurning = '2023-04-11T07:19:54.816Z';
-  const fireBonusAmount = 250;
+  const [bonusData, setBonusData] = useState({});
 
   useEffect(() => {
     const fetchData = async () => {
       const result = await apiTokenInstance.post(TOKEN_PATH, tokenData);
-      setIsLoading(false);
       return result.data.accessToken;
     }
 
     fetchData()
-      .then(function (response) {
-        console.log(response);
+      .then((accessToken) => {
+        return apiBonusInstance.get(`${ BONUS_PATH}${ accessToken }`);
+      })
+      .then((result) => {
+        setBonusData(result.data.data);
+        setIsLoading(false);
       })
       .catch(console.error);
   }, []);
@@ -73,11 +75,11 @@ const Bonus = () => {
             ? <p>Loading...</p>
             :
             <>
-              <p className="bonus__amount">{bonusAmount} бонусов</p>
+              <p className="bonus__amount">{bonusData.currentQuantity} бонусов</p>
               <div className="bonus__fire">
-                <p className="bonus__date">{new Date(dateBurning).toLocaleDateString('ru-RU', options)} сгорит </p>
+                <p className="bonus__date">{new Date(bonusData.dateBurning).toLocaleDateString('ru-RU', options)} сгорит </p>
                 <IconFire />
-                <p className="bonus__date">{fireBonusAmount} бонусов</p>
+                <p className="bonus__date">{bonusData.forBurningQuantity} бонусов</p>
               </div>
             </>
         }

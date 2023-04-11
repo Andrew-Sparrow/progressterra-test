@@ -1,0 +1,8 @@
+.app {
+  background: linear-gradient(180deg, #fff 130px, #d2333e 0, #f54b55 378px, #fff 378px);
+  min-height: 100vh;
+
+  &__logo {
+    text-transform: uppercase;
+  }
+}

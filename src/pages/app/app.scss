@@ -1,8 +1,19 @@
+@import "../../styles/variables.scss";
+
+
 .app {
-  background: linear-gradient(180deg, #fff 130px, #d2333e 0, #f54b55 378px, #fff 378px);
+  width: 375px;
+  box-sizing: border-box;
+  margin-left: auto;
+  margin-right: auto;
+  background: linear-gradient(180deg, $color-white 130px, $color-gradient-red-first 0, $color-gradient-red-second 378px, #fff 378px);
   min-height: 100vh;
+  padding-top: 30px;
+  padding-left: 20px;
+  padding-right: 20px;
 
   &__logo {
     text-transform: uppercase;
+    margin: 0;
   }
 }

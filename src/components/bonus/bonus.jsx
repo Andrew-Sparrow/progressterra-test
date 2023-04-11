@@ -51,13 +51,6 @@ const Bonus = () => {
   const dateBurning = '2023-04-11T07:19:54.816Z';
   const fireBonusAmount = 250;
 
-  // const fetchData = useCallback(async () => {
-  //   const result = await apiTokenInstance.post(TOKEN_PATH, tokenData);
-  //   // console.log(result.data.accessToken);
-  //   setIsLoading(false);
-  //   return result.data.accessToken;
-  // }, [])
-
   useEffect(() => {
     const fetchData = async () => {
       const result = await apiTokenInstance.post(TOKEN_PATH, tokenData);

@@ -22,6 +22,10 @@ export const getAxiosBonusInstance = () => {
   const axiosInstance = axios.create({
     baseURL: BONUS_BACKEND_URL,
     timeout: REQUEST_TIMEOUT,
+    headers: {
+      'AccessKey': '891cf53c-01fc-4d74-a14c-592668b7a03c',
+      'Content-Type': 'application/json'
+    }
   });
 
   return axiosInstance;

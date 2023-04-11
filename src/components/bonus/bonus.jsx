@@ -37,10 +37,11 @@ const apiTokenInstance = getAxiosTokenInstance();
 const apiBonusInstance = getAxiosBonusInstance();
 
 const tokenData = {
-  "idClient": "2c44d8c2-c89a-472e-aab3-9a8a29142315",
+  // "idClient": "2c44d8c2-c89a-472e-aab3-9a8a29142315",
+  "idClient": process.env.REACT_APP_CLIENT_ID,
   "accessToken": "",
   "paramName": "device",
-  "paramValue": "7db72635-fd0a-46b9-813b-1627e3aa02ea",
+  "paramValue": process.env.REACT_APP_DEVICE_ID,
   "latitude": 0,
   "longitude": 0,
   "sourceQuery": 0

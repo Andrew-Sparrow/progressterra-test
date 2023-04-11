@@ -12,8 +12,25 @@
   padding-left: 20px;
   padding-right: 20px;
 
+  &__header {
+    display: flex;
+    justify-content: space-between;
+  }
+
   &__logo {
     text-transform: uppercase;
     margin: 0;
+  }
+
+  &__button {
+    border: none;
+    transition: all .2s ease-in-out;
+    padding: 0;
+    background-color: transparent;
+  }
+
+  &__button:hover {
+    transform: scale(1.1);
+    cursor: pointer;
   }
 }

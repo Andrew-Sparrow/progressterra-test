@@ -36,6 +36,7 @@
     ]
   },
   "devDependencies": {
+    "handy-svg": "^1.0.8",
     "sass": "^1.61.0"
   }
 }

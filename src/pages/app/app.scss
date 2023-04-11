@@ -15,11 +15,15 @@
   &__header {
     display: flex;
     justify-content: space-between;
+    margin-bottom: 20px;
   }
 
   &__logo {
     text-transform: uppercase;
     margin: 0;
+    font-size: 16px;
+    line-height: 24px;
+    font-weight: 400;
   }
 
   &__button {

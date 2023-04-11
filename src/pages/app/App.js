@@ -1,7 +1,8 @@
 import { HandySvg } from 'handy-svg';
 
 import './app.scss';
-import iconInfoSVG from '../../icons/information-button-1.svg'
+import iconInfoSVG from '../../icons/information_button.svg';
+import { Bonus } from '../../components/bonus/bonus';
 
 const IconInfo = () => (
   <HandySvg
@@ -20,6 +21,9 @@ function App() {
           <IconInfo />
         </button>
       </header>
+      <main>
+        <Bonus/>
+      </main>
     </div>
   );
 }
